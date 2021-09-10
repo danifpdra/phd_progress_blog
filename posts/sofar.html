@@ -6,27 +6,27 @@ post.html<!DOCTYPE html>
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Clean Blog - Start Bootstrap Theme</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.html">Daniela's PhD</a>
+                <a class="navbar-brand" href="../index.html">Daniela's PhD</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
@@ -35,7 +35,7 @@ post.html<!DOCTYPE html>
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/larcc_2.jpeg')">
+        <header class="masthead" style="background-image: url('../assets/img/larcc_2.jpeg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
@@ -70,12 +70,12 @@ post.html<!DOCTYPE html>
                         I developed a fully functional collaborative cell mimicking the real one at LAR. This involved the creation of xacros for each cell component. It also involved the simulation in gazebo of the cameras, lidars and collaborative robot.
                         <p>At the moment, the cell is completly working in real time and is able to simulate all of the above and to plan and execute ur10e trajectories using the motion planning toolbox. </p>
 
-                        <a href="#!"><img class="img-fluid" src="assets/img/larcc.png" alt="..." /></a>
+                        <a href="#!"><img class="img-fluid" src="../assets/img/larcc.png" alt="..." /></a>
                         Several tests of the sensor drivers (Orbecc Astra and Velodyne VLP16) were performed to obtain robust communication with the sensors through the ROS. These tests also implied adapting the drivers to work with multiple sensors simultaneously. It is now possible to acquire sensory data from the 3D lidar and the RGBD cameras. Experiments are being conducted to understand the number of sensors that can be used simultaneously. To optimize the bandwidth used for communications between sensors and the computer, the sensors are being configured to the appropriate resolution in the case of the cameras. The lidars are being configured to monitor of a 180º spherical calotte instead of the 360º configured by default. The following figure has an example of sensory data visualized in real-time in the cell. The video can be viewed at https://www.youtube.com/watch?v=miV3Ge0ebUw .
                         <h2 class="section-heading">Development of a tool to visualize the sensors' frustrum</h2>
 
                         An interactive system is being developed to support the optimization of the positioning of the sensors using real-time visualization of their field of view. This tool selects the ROS topics corresponding to the cameras connected at the moment. It can fetch the necessary parameters of the camera pinhole model, such as focal length and image size, from the camera information published by the driver. From these parameters and knowing the minimum and maximum plane of cut corresponding to the sensor, mathematical equations are used to calculate the size of the sensor frustum. This frustum allows knowing exactly the field of view of each sensor and is drawn in real-time in the ROS visualization tool, RVIZ. This tool, shown in the following figure, is considered fundamental to determining the sensors' optimal positioning that results in the largest possible covered cell volume, which is essential to ensure that the safety requirements involved in human-robot collaboration are met.
-                        <a href="#!"><img class="img-fluid" src="assets/img/frustum.png" alt="..." /></a>
+                        <a href="#!"><img class="img-fluid" src="../assets/img/frustum.png" alt="..." /></a>
                         <h2 class="section-heading">Development of manual tool to align the point clouds (initial estimate) </h2>
 
                         A script was created that attaches a 6DOF interactive marker to RVIZ. The pose and position of this marker is associated with the coordinate frame of the point clouds. When the marker is moved, so is the coordinate frame and consequentially the point clouds. This tool allows to manually align the point clouds to create a more adequate initial estimate for optimization.
@@ -146,6 +146,6 @@ post.html<!DOCTYPE html>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="../js/scripts.js"></script>
     </body>
 </html>
