@@ -386,14 +386,14 @@
                     RGBD cameras is essential to the semantic perception of objects.
                     With this in mind, this plan has been divided into the following tasks:</p>
 
-<p></p>
+                <p></p>
                 <h4>A. Literature Review</h4>
                 <p>As a highly researched and innovative subject, it requires a previous in-depth literature review.
                     This is important to understand the context and what has already been developed, providing a
                     complete comprehension of the main questions/problems associated with the multi-modality and
                     collaborative robots. The focus is on identifying the significant shortcomings in the existing
                     research and what has or has not been done to address these gaps.</p>
-<p></p>
+                <p></p>
                 <h4>B. Simulated Collaborative Cell</h4>
                 The first task is to create the cell and its contents in a ROS simulation environment, which involves
                 describing the robot with information about its physical and visual properties and the objects'
@@ -418,7 +418,7 @@
                 the safety requirements and elaborate complex and quick tests without the need to use the physical
                 hardware.
 
-<p></p>
+                <p></p>
                 <h4>C. Automatic Extrinsic Calibration of a Multi-modal and Multi-sensor Setup</h4>
 
                 Extrinsic calibration is the process of determining the sensor's pose w.r.t. to another sensor or the
@@ -452,7 +452,7 @@
 
                 Additionally, this task also includes the creation or adaptation of the sensors' drivers in ROS to
                 launch multiple sensors at the same time with the correct configurations.
-<p></p>
+                <p></p>
                 <h4>D. Volumetric Monitoring</h4>
 
                 After the calibration procedure, and with accurate estimates for the sensors' transformations, the
@@ -469,7 +469,7 @@
                 consider occlusions (static and dynamic). The occluded volume of the cell is impossible to predict since
                 moving objects cause moving occlusions. The hand-eye camera could also be used to explore these occluded
                 sub-regions of the cell volume.
-<p></p>
+                <p></p>
                 <h4>E. Advanced Perception</h4>
 
                 Cobots are expected to perform complex and advanced tasks in collaboration with human operators;
@@ -492,7 +492,7 @@
                 objectives will all be achieved with deep learning and unsupervised learning for objects to create a
                 system able to learn new unseen objects and adapt to unknown scenarios without compromising the safety
                 requirements.
-<p></p>
+                <p></p>
                 <h4>F. Testing in Real Environments</h4>
 
                 The project will carry out tests in a collaborative cell containing multiple sensors. This cell
@@ -506,7 +506,7 @@
                 The indicators are already defined to evaluate the calibration method; this phase will be evaluated
                 using the rotation and translation error, x and y error, and the root mean squared error. These errors
                 also allow comparing the results with other prominent calibration techniques.
-<p></p>
+                <p></p>
                 <h4> Expected Outcome </h4>
 
                 The project will extend the ATOM framework that has already achieved publications in top journals in
@@ -521,7 +521,7 @@
                 communication with humans to facilitate the collaboration and make it as efficient as possible. For
                 this, humans should be constantly monitored, not only in terms of where they are (for security reasons)
                 but also in terms of human action.
-<p></p>
+                <p></p>
                 <h4> Contingency Plan</h4>
 
                 There are phases of the plan that may encounter unforeseen circumstances; for example, the sensors are
@@ -533,11 +533,158 @@
                 Due to the current pandemic, there may also continue to exist limitations to laboratory work. In this
                 situation, the plan would be to double down on developing a simulated collaborative cell, which would
                 support all the subsequent developments in the plan of action.
-<p></p>
+                <p></p>
                 <h2> Timeline</h2>
                 <a href="#!"><img class="img-fluid"
                                   src="../assets/img/timetable_DanielaRato-1.png"
                                   alt="..."/></a>
+
+
+                <h2> References</h2>
+
+                <p>[1] P. Tsarouchi, S. Makris, and G. Chryssolouris, “Human–robot interaction
+                    review and challenges on task planning and programming,” International
+                    Journal of Computer Integrated Manufacturing, vol. 29, no. 8, pp. 916–
+                    931, 2016.</p>
+                <p>[2] A. M. Djuric, R. Urbanic, and J. Rickli, “A framework for collaborative
+                    robot (cobot) integration in advanced manufacturing systems,” SAE Int.
+                    J. Mater. Manf., vol. 9, pp. 457–464, 04 2016.</p>
+                <p>[3] A. Cherubini, R. Passama, A. Meline, A. Crosnier, and P. Fraisse, “Mul-
+                    timodal control for human-robot cooperation,” in 2013 IEEE/RSJ Inter-
+                    national Conference on Intelligent Robots and Systems, pp. 2202–2207,
+                    2013.</p>
+                <p>[4] E. Magrini, F. Ferraguti, A. J. Ronga, F. Pini, A. De Luca, and F. Leali,
+                    “Human-robot coexistence and interaction in open industrial cells,”
+                    Robotics and Computer-Integrated Manufacturing, vol. 61, p. 101846,
+                    2020.</p>
+                <p>[5] S. Haddadin, A. Albu-Schaeffer, A. De Luca, and G. Hirzinger, Collision
+                    Detection and Reaction: A Contribution to Safe Physical Human-Robot
+                    Interaction. 2008. Pages: 3356-+ Publication Title: 2008 Ieee/Rsj Inter-
+                    national Conference on Robots and Intelligent Systems, Vols 1-3, Confer-
+                    ence Proceedings WOS:000259998202091.</p>
+                <p>[6] H. Liu and L. Wang, “Collision-free human-robot collaboration based
+                    on context awareness,” Robotics and Computer-Integrated Manufacturing,
+                    vol. 67, p. 101997, 2021.</p>
+                <p>[7] C. Morato, K. N. Kaipa, B. Zhao, and S. K. Gupta, “Toward Safe Human
+                    Robot Collaboration by Using Multiple Kinects Based Real-Time Human
+                    Tracking,” Journal of Computing and Information Science in Engineer-
+                    ing, vol. 14, 01 2014. 011006.</p>
+                <p>[8] . ISO 10218—Robots for Industrial Environments—Safety Require-
+                    ments—Part 1: Robot, ISO ISO/TC 299</p>
+                <p>[9] G. Grunwald, G. Schreiber, A. Albu-Schaffer, and G. Hirzinger, “Touch:
+                    The direct type of human interaction with a redundant service robot,” in
+                    Proceedings 10th IEEE International Workshop on Robot and Human In-
+                    teractive Communication. ROMAN 2001 (Cat. No.01TH8591), pp. 347–
+                    352, 2001.</p>
+                <p>[10] A. J. Schmid, O. Weede, and H. Worn, “Proactive robot task selection
+                given a human intention estimate,” in RO-MAN 2007 - The 16th IEEE
+                International Symposium on Robot and Human Interactive Communication, pp. 726–731, 2007.</p>
+                <p>[11] M. Awais and D. Henrich, “Proactive premature intention estimation for
+                intuitive human-robot collaboration,” in 2012 IEEE/RSJ International
+                Conference on Intelligent Robots and Systems, pp. 4098–4103, 2012.</p>
+                <p>[12] L. Wang, M. Givehchi, G. Adamson, and M. Holm, “A sensor-driven 3d
+                model-based approach to remote real-time monitoring,” CIRP Annals,
+                vol. 60, no. 1, pp. 493–496, 2011.</p>
+                <p>[13] A. M. Zanchettin, N. M. Ceriani, P. Rocco, H. Ding, and B. Matthias,
+                “Safety in human-robot collaborative manufacturing environments: Metrics and control,” IEEE Transactions
+                on Automation Science and Engineering, vol. 13, no. 2, pp. 882–893, 2016.</p>
+                <p>[14] A. Mohammed, B. Schmidt, and L. Wang, “Active collision avoidance
+                for human-robot collaboration driven by vision sensors,” International
+                Journal of Computer Integrated Manufacturing, vol. 30, no. 9, pp. 970–
+                980, 2017. WOS:000402991300006.</p>
+                <p>[15] F. Flacco, T. Kroeger, A. De Luca, and O. Khatib, “A Depth Space Approach to Human-Robot Collision
+                Avoidance,” in 2012 Ieee International
+                Conference on Robotics and Automation (icra), pp. 338–345, 2012. ISSN:
+                1050-4729 WOS:000309406700051.</p>
+                <p>[16] P. A. Lasota, G. F. Rossano, and J. A. Shah, “Toward safe closeproximity human-robot interaction
+                with standard industrial robots,” in 2014 IEEE International Conference on Automation Science and Engineering (CASE), pp. 339–344, 2014.</p>
+                <p>[17] J. Santos, M. Oliveira, R. Arrais, and G. Veiga, “Autonomous scene exploration for robotics: A
+                conditional random view-sampling and evaluation using a voxel-sorting mechanism for efficient ray
+                casting,” Sensors, vol. 20, no. 15, 2020.</p>
+                <p>[18] T. Baltruˇsaitis, C. Ahuja, and L.-P. Morency, “Multimodal Machine
+                Learning: A Survey and Taxonomy,” arXiv:1705.09406 [cs], Aug. 2017.  arXiv: 1705.09406.</p>
+                <p>[19] P. K. Atrey, M. A. Hossain, A. El Saddik, and M. S. Kankanhalli, “Multimodal fusion for multimedia
+                analysis: a survey,” Multimedia Systems, vol. 16, pp. 345–379, Nov 2010.</p>
+                <p>[20] T. Hanning, A. Lasaruk, and T. Tatschke, “Calibration and low-level
+                data fusion algorithms for a parallel 2d/3d-camera,” Information Fusion,
+                vol. 12, no. 1, pp. 37 – 47, 2011. Special Issue on Intelligent Transportation
+                Systems.</p>
+                <p>[21] A. M. Pinto and A. C. Matos, “Maresye: A hybrid imaging system for
+                underwater robotic applications,” Information Fusion, vol. 55, pp. 16 –
+                29, 2020.</p>
+                <p>[22] M. Tsogas, N. Floudas, P. Lytrivis, A. Amditis, and A. Polychronopoulos,
+                “Combined lane and road attributes extraction by fusing data from digital
+                map, laser scanner and camera,” Information Fusion, vol. 12, no. 1, pp. 28
+                – 36, 2011. Special Issue on Intelligent Transportation Systems.</p>
+                <p>[23] M. Oliveira, V. Santos, and A. D. Sappa, “Multimodal inverse perspective
+                mapping,” Information Fusion, vol. 24, pp. 108 – 121, 2015.</p>
+                <p>[24] W. Jiuqing, C. Xu, B. Shaocong, and L. Li, “Distributed data association
+                in smart camera network via dual decomposition,” Information Fusion,
+                vol. 39, pp. 120 – 138, 2018.</p>
+                <p>[25] B. Rasti and P. Ghamisi, “Remote sensing image classification using subspace sensor fusion,”
+                Information Fusion, vol. 64, pp. 121 – 130, 2020.</p>
+                <p>[26] F. Vasconcelos, J. Barreto, and U. Nunes, “A minimal solution for the
+                extrinsic calibration of a camera and a laser-rangefinder,” IEEE Transactions on Pattern Analysis and
+                Machine Intelligence, vol. 34, no. 11, pp. 2097–2107, 2012.</p>
+                <p>[27] S. Rodriguez F., V. Fr´emont, and P. Bonnifait, “Extrinsic calibration
+                between a multi-layer lidar and a camera,” pp. 214–219, 2008. </p>
+                <p>[28] M. Lindner, I. Schiller, A. Kolb, and R. Koch, “Time-of-flight sensor
+                calibration for accurate range sensing,” Computer Vision and Image Understanding, vol. 114, no. 12, pp.
+                1318–1328, 2010. </p>
+                <p>[29] Y. Chen, M. Jahanshahi, P. Manjunatha, W. Gan, M. Abdelbarr,
+                S. Masri, B. Becerik-Gerber, and J. Caffrey, “Inexpensive multimodal
+                sensor fusion system for autonomous data acquisition of road surface conditions,” IEEE Sensors Journal,
+                vol. 16, no. 21, pp. 7731–7743, 2016.</p>
+                <p>[30] G. Chen, G. Cui, Z. Jin, F. Wu, and X. Chen, “Accurate intrinsic and
+                extrinsic calibration of rgb-d cameras with gp-based depth correction,”
+                IEEE Sensors Journal, vol. 19, no. 7, pp. 2685–2694, 2019. </p>
+                <p>[31] S. Hosseinian, H. Arefi, and N. Navab, “Toward an end-to-end calibration for mobile c-arm in
+                combination with a depth sensor for surgical augmented reality applications,” Sensors (Switzerland), vol. 20, no. 1,
+                2020.</p>
+                <p>[32] P. Furgale, J. Rehder, and R. Siegwart, “Unified temporal and spatial
+                calibration for multi-sensor systems,” pp. 1280–1286, 2013. </p>
+                <p>[33] M. Pereira, D. Silva, V. Santos, and P. Dias, “Self calibration of multiple
+                lidars and cameras on autonomous vehicles,” Robotics and Autonomous
+                Systems, vol. 83, pp. 326–337, 2016. </p>
+                <p>[34] Z. Taylor and J. Nieto, “Motion-based calibration of multimodal sensor
+                extrinsics and timing offset estimation,” IEEE Transactions on Robotics,
+                vol. 32, no. 5, pp. 1215–1229, 2016. </p>
+                <p>[35] L. Liu, W. Ouyang, X. Wang, P. Fieguth, J. Chen, X. Liu, and
+                M. Pietik¨ainen, “Deep learning for generic object detection: A survey,”
+                International Journal of Computer Vision, vol. 128, no. 2, pp. 261–318,
+                2020. </p>
+                <p>[36] M. Oliveira, L. Seabra Lopes, G. H. Lim, H. Kasaei, A. Sappa, and
+                A. Tom´e, “Concurrent learning of visual codebooks and object categories
+                in open-ended domains,” 09 2015.</p>
+                <p>[37] Z. Wu, Y. Xiong, S. Yu, and D. Lin, “Unsupervised feature learning via
+                non-parametric instance discrimination,” pp. 3733–3742, 2018. </p>
+                <p>[38] L. Chen, H. Wei, and J. Ferryman, “A survey of human motion analysis
+                using depth imagery,” Pattern Recogn. Lett., vol. 34, p. 1995–2006, Nov.
+                2013.</p>
+                <p>[39] S. O. Slim, A. Atia, M. M. Elfattah, and M.-S. M.Mostafa, “Survey on human activity recognition
+                based on acceleration data,” International Journal of Advanced Computer Science and Applications, vol.
+                10, no. 3, 2019.</p>
+                <p>[40] J. Shotton, A. Fitzgibbon, M. Cook, T. Sharp, M. Finocchio, R. Moore,
+                A. Kipman, and A. Blake, “Real-time human pose recognition in parts
+                from single depth images,” in CVPR 2011, pp. 1297–1304, 2011.</p>
+                <p>[41] E. Escobedo Cardenas and G. Camara Chavez, “Multimodal human action recognition based on a fusion
+                of dynamic images using cnn descriptors,” in 2018 31st SIBGRAPI Conference on Graphics, Patterns and
+                Images (SIBGRAPI), pp. 95–102, 2018.</p>
+                <p>[42] B. Mahasseni and S. Todorovic, “Regularizing long short term memory with 3d human-skeleton
+                sequences for action recognition,” in 2016
+                IEEE Conference on Computer Vision and Pattern Recognition (CVPR),pp. 3054–3062, 2016.</p>
+                <p>[43] M. Oliveira, A. Castro, T. Madeira, E. Pedrosa, P. Dias, and V. Santos,
+                “A ros framework for the extrinsic calibration of intelligent vehicles: A
+                multi-sensor, multi-modal approach,” Robotics and Autonomous Systems,
+                vol. 131, p. 103558, 2020.</p>
+                <p>[44] A. S. Pinto de Aguiar, M. A. Riem de Oliveira, E. F. Pedrosa, and F. B.
+                Neves dos Santos, “A camera to lidar calibration approach through the
+                optimization of atomic transformations,” Expert Systems with Applications, p. 114894, 2021.</p>
+                <p>[45] A. Hornung, K. M. Wurm, M. Bennewitz, C. Stachniss, and W. Burgard, “OctoMap: An efficient
+                probabilistic 3D mapping framework
+                based on octrees,” Autonomous Robots, 2013. Software available at
+                http://octomap.github.com.</p>
+
 
             </div>
         </div>
