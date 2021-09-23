@@ -48,7 +48,7 @@
                     <span class="meta">
                                 Posted by
                                 <a href="#!">Daniela Rato</a>
-                                on September 9, 2021
+                                on September 23, 2021
                             </span>
                 </div>
             </div>
@@ -64,42 +64,33 @@
 
                 the first two weeks of september were focused on the calibration in simulation mode.
 
-                <p>this covers:</p>
+                <p>This week's progresses include:</p>
                 <ul>
-                    <li>solving previous issues related to the simulation, including: correcting the xacro tf tree,
-                        solving problems relative with the robotiq tool, correcting file paths relative to the ur10e
-                        simulation files
+                    <li>Documentation and writing. Review of article "Multi-modal Calibration of Visual and 3D Cameras
+                        using a Spherical Target detected with Deep Learning"
                     </li>
-                    <li>recording a rosbag with the necessary sensor information. this topic was not straightfoward due
-                        to the gazebo real time factor being really low, which caused the rosbags to have a much faster
-                        time than the real time. the conclusion was that the use_sim_time flag can not be false (false =
-                        records in real time), because the static tfs were assuming the real time and the non static tfs
-                        were being calculated in real time by atom, which caused different timestamps and throws an
-                        error in conclusion, the rosbag needs to be recorded with the use_sim_time=true and the bag_rate
-                        used to play the bag needs to be around 0.1 .
-                    </li>
-                    <li>collecting data in the form of collections, then used to calibrate. here there were also several
-                        problems. first the charuco wasn't being detected by the cameras, which was due to the errors in
-                        the pattern detector. then atom wasn't generating the interactive markers to create the data
-                        lablers for all the lidar sensors and the save collection menu wasn't showing. there was also a
-                        mismatch between the image of the charuco in simulation and its lidars projections. all of these
-                        issues were addressed and are now solved.
-                    </li>
-                    <li>the actual calibration process. this process is throwing several errors. still not solved.</li>
+                    <li>Sucessfully able to calibrate in a simulated environment with two lidars and one camera.</li>
+                    <li>FCT documentation </li>
+                    <li>Update of the blog with the complete PhD plan</li>
+                    <li>Selection of components for the new LARCCell computer</li>
                 </ul>
+
+                <iframe width="420" height="315"
+                        src="https://youtu.be/1NOEBKDMIpk">
+                </iframe>
 
 
                 <h4>Issues </h4>
 
-                <p><a href="https://github.com/lardemua/larcc/issues/23">calibration in simulation - open</a></p>
-                <p><a href="https://github.com/lardemua/larcc/issues/24">use_sim_time argument - closed</a></p>
-                <p><a href="https://github.com/lardemua/larcc/issues/25">robotiq crashes in gazebo - closed</a></p>
-                <p><a href="https://github.com/lardemua/larcc/issues/26">mismatch between actual charuco and camera and
-                    lidar projections - closed</a></p>
-                <p><a href="https://github.com/lardemua/larcc/issues/27">adjust configure_calibration_pkg to one
-                    interactive marker per sensor - closed</a></p>
-                <p><a href="https://github.com/lardemua/larcc/issues/28">menu to save collection - closed</a></p>
-                <p><a href="https://github.com/lardemua/larcc/issues/29">error due to -nig flag - open</a></p>
+                <p><a href="https://github.com/lardemua/atom/issues/316">verify child-parent links in configuration file
+                    - open, ongoing - not pushed</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/22">selection of new comptuer - open</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/23">calibration in simulation mode - open</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/29">error due to -nig flag - closed</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/30">wrong visualization when calibrating -
+                    closed</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/31">create larcc_experiments package with bags -
+                    closed</a></p>
 
 
                 <!--                        <p>never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. the airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>-->
