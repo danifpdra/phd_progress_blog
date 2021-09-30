@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Daniela's PhD</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+          rel="stylesheet" type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet"/>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .img-zoom-container {
+            position: relative;
+        }
+
+        .img-zoom-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            /*set the size of the lens:*/
+            width: 80px;
+            height: 80px;
+        }
+
+        .img-zoom-result {
+            border: 1px solid #d4d4d4;
+            /*set the size of the result div:*/
+            width: 500px;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+    </style>
+    <script>
+        function imageZoom(imgID, resultID) {
+            var img, lens, result, cx, cy;
+            img = document.getElementById(imgID);
+            result = document.getElementById(resultID);
+            /*create lens:*/
+            lens = document.createElement("DIV");
+            lens.setAttribute("class", "img-zoom-lens");
+            /*insert lens:*/
+            img.parentElement.insertBefore(lens, img);
+            /*calculate the ratio between result DIV and lens:*/
+            cx = result.offsetWidth / lens.offsetWidth;
+            cy = result.offsetHeight / lens.offsetHeight;
+            /*set background properties for the result DIV:*/
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+            /*execute a function when someone moves the cursor over the image, or the lens:*/
+            lens.addEventListener("mousemove", moveLens);
+            img.addEventListener("mousemove", moveLens);
+            /*and also for touch screens:*/
+            lens.addEventListener("touchmove", moveLens);
+            img.addEventListener("touchmove", moveLens);
+
+            function moveLens(e) {
+                var pos, x, y;
+                /*prevent any other actions that may occur when moving over the image:*/
+                e.preventDefault();
+                /*get the cursor's x and y positions:*/
+                pos = getCursorPos(e);
+                /*calculate the position of the lens:*/
+                x = pos.x - (lens.offsetWidth / 2);
+                y = pos.y - (lens.offsetHeight / 2);
+                /*prevent the lens from being positioned outside the image:*/
+                if (x > img.width - lens.offsetWidth) {
+                    x = img.width - lens.offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y > img.height - lens.offsetHeight) {
+                    y = img.height - lens.offsetHeight;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                /*set the position of the lens:*/
+                lens.style.left = x + "px";
+                lens.style.top = y + "px";
+                /*display what the lens "sees":*/
+                result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+            }
+
+            function getCursorPos(e) {
+                var a, x = 0, y = 0;
+                e = e || window.event;
+                /*get the x and y positions of the image:*/
+                a = img.getBoundingClientRect();
+                /*calculate the cursor's x and y coordinates, relative to the image:*/
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                /*consider any page scrolling:*/
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x: x, y: y};
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="../index.html">Daniela's PhD</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../assets/img/larcc_2.jpeg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>So far... </h1>
+                    <h2 class="subheading">Year 1</h2>
+                    <span class="meta">
+                                Posted by
+                                <a href="#!">Daniela Rato</a>
+                                on September 30, 2021
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h2 class="section-heading">Calibration with real hardware</h2>
+
+                <p>This week's progress:</p>
+                <ul>
+                    <li>Placement of the sensors mimicking the simulation setup</li>
+                    <li>Recording of rosbag using real data</li>
+                    <li>Adaptation of methodology for a centered camera</li>
+                    <li>Setting initial estimate in real setup</li>
+                    <li>Collecting data and obtaining collections with real setup</li>
+                    <li>Callibration with data obtained with real hardware</li>
+                </ul>
+
+                <p> TODO </p>
+                <ul>
+                    <li>Check inconsistencies in calibration results with real data</li>
+                </ul>
+
+
+                <h3>Tf tree in simulation vs tf tree with real hardware</h3>
+
+                <p><b>Simulation</b></p>
+
+
+                <div class="img-zoom-container">
+                    <img id="myimage" src="../assets/img/frames_complex.png" width="700">
+                    <div id="myresult" class="img-zoom-result"></div>
+                </div>
+
+                <p style="font-size: 12px">(zoom)</p>
+
+                <script>
+                    // Initiate zoom effect:
+                    imageZoom("myimage", "myresult");
+                </script>
+
+                <!--                <a href="#!"><img class="img-fluid"-->
+                <!--                                  src="../assets/img/frames_complex.png"-->
+                <!--                                  alt="..."/></a>-->
+
+                <p><b>Real setup</b></p>
+
+                <div class="img-zoom-container">
+                    <img id="myimage2" src="../assets/img/frames_real.png" width="700">
+                    <div id="myresult2" class="img-zoom-result"></div>
+                </div>
+
+                <p style="font-size: 12px">(zoom)</p>
+
+                <script>
+                    // Initiate zoom effect:
+                    imageZoom("myimage2", "myresult2");
+                </script>
+
+                <!--                <a href="#!"><img class="img-fluid"-->
+                <!--                                  src="../assets/img/frames_real.png"-->
+                <!--                                  alt="..."/></a>-->
+
+
+                <hr class="my-4"/>
+                <h3>Demonstration of initial estimate</h3>
+                <p></p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/R2kZhae8Dco"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                <hr class="my-4"/>
+                <h3>Demonstration of data collecting</h3>
+                <p></p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/z8iP9gy2__0"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                <hr class="my-4"/>
+                <h3>Demonstration of calibration procedure (initial guess noise 0, 0 - tol 10e-6)</h3>
+                <p></p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/RmPav1Ko6pM"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                <hr class="my-4"/>
+                <h3>Demonstration of calibration procedure (initial guess noise 0.2, 0.2 - tol 10e-6)</h3>
+                <p></p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/RmPav1Ko6pM"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+
+                <h4>Issues </h4>
+
+                <p><a href="https://github.com/lardemua/larcc/issues/23">calibration in simulation mode - open</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/32">calibration with real hardware - open</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/33">Change resolution of astra camera to SXGA or
+                    XGA - open</a></p>
+
+
+                <!--                        <p>never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. the airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>-->
+                <!--                        <p>science cuts two ways, of course; its products can be used for both good and evil. but there's no turning back from science. the early warnings about technological dangers also come from science.</p>-->
+                <!--                        <p>what was most significant about the lunar voyage was not that man set foot on the moon but that they set eye on the earth.</p>-->
+                <!--                        <p>a chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. that's how i felt seeing the earth for the first time. i could not help but love and cherish her.</p>-->
+                <!--                        <p>for those who have seen the earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. the things that we share in our world are far more valuable than those which divide us.</p>-->
+                <!--                        <h2 class="section-heading">the final frontier</h2>-->
+                <!--                        <p>there can be no thought of finishing for ‘aiming for the stars.’ both figuratively and literally, it is a task to occupy the generations. and no matter how much progress one makes, there is always the thrill of just beginning.</p>-->
+                <!--                        <p>there can be no thought of finishing for ‘aiming for the stars.’ both figuratively and literally, it is a task to occupy the generations. and no matter how much progress one makes, there is always the thrill of just beginning.</p>-->
+                <!--                        <blockquote class="blockquote">the dreams of yesterday are the hopes of today and the reality of tomorrow. science has not yet mastered prophecy. we predict too much for the next year and yet far too little for the next ten.</blockquote>-->
+                <!--                        <p>spaceflights cannot be stopped. this is not the work of any one man or even a group of men. it is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>-->
+                <!--                        <h2 class="section-heading">reaching for the stars</h2>-->
+                <!--                        <p>as we got further and further away, it [the earth] diminished in size. finally it shrank to the size of a marble, the most beautiful you can imagine. that beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. seeing this has to change a man.</p>-->
+                <!--                        <a href="#!"><img class="img-fluid" src="assets/img/post-sample-image.jpg" alt="..." /></a>-->
+                <!--                        <span class="caption text-muted">to go places and do things that have never been done before – that’s what living is all about.</span>-->
+                <!--                        <p>space, the final frontier. these are the voyages of the starship enterprise. its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>-->
+                <!--                        <p>as i stand out here in the wonders of the unknown at hadley, i sort of realize there’s a fundamental truth to our nature, man must explore, and this is exploration at its greatest.</p>-->
+                <!--                        <p>-->
+                <!--                            placeholder text by-->
+                <!--                            <a href="http://spaceipsum.com/">space ipsum</a>-->
+                <!--                            &middot; images by-->
+                <!--                            <a href="https://www.flickr.com/photos/nasacommons/">nasa on the commons</a>-->
+                <!--                        </p>-->
+            </div>
+        </div>
+    </div>
+</article>
+<!-- Footer-->
+<footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2021</div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="../js/scripts.js"></script>
+</body>
+</html>
