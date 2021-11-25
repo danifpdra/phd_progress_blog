@@ -156,31 +156,73 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <h2 class="section-heading"> Solving RGBD problems </h2>
+                <h2 class="section-heading"> Study of Solutions to Identify the Charuco Shape in the Depth Image </h2>
 
+
+                <p>
+                    To segment the shape of the calibration pattern in the depth image, several tests were conducted
+                    with
+                    edge detection and find contours algorithms to see how well the real depth images could be
+                    segmented.
+                    The following figure shows the result of these tests applied to the same depth image containing the
+                    chessboard.
+                </p>
+                <p>
+                    The depth image is originally a float image, so none of the OpenCV toolbox functions works in these
+                    images. Conversion to uint8 is also not an option because the conversion would mean a significant
+                    loss of resolution, which caused even more difficulties to detect the difference between the
+                    chessboard and its support. For this reason, I opted to use the Skimage toolkit, that allows to
+                    apply inumerous filters to float images without a problem.
+                </p>
+
+
+                <a href="#!"><img class="img-fluid" src="../assets/img/filters.jpeg"
+                                  alt="..."/></a>
+
+                <p>
+                    After seeing the none of these algorithms were producing a good segmentation of the chessboard, we
+                    developed our own flood fill algorithm by hand. This algorithm produces best results, but still a
+                    part of the support is still seen as a part of the chessboard. The flood fill algorithms work by
+                    evaluating the gradients between neighbor pixels, and the chessboard is distanced from the support
+                    around 20cm, which didn't make sense of why the flood and fill was considering it part of the
+                    chessboard, since its tolerance of distance to neighbor pixels is much smaller. This made us inspect
+                    why the depth point cloud to investigate why this was happenings
+                </p>
+                <a href="#!"><img class="img-fluid" src="../assets/img/flood_fill.png"
+                                  alt="..."/></a>
+
+                <p>The following image shows the point cloud in the area where the support is appearing as part of the
+                    chessboard. As we can see, there is a slope between the actual chessboard and the support that
+                    appears next to it. Apparently this is a common problem in range sensors: when the distance between
+                    two objects is short, the adjacent infrared rays that are projected to measure the distances are too
+                    close and create a misperception of the 3D shapes. </p>
+
+                <a href="#!"><img class="img-fluid" src="../assets/img/depth_pc_bug.png"
+                                  alt="..."/></a>
+
+                <p> To correct this problem I propose two complementary solutions:</p>
                 <ul>
-                    <li>Construction of chessboard support and testing</li>
-                    <li>Implementation of a new system based on the sensor modality to identify the sensor to calibrate
-                        and therefore the correct labeler. This field is optional, in the case the user does not
-                        identify the sensor, it will be chosen automatically by the program using the msg_type published
-                        by the sensor.
+                    <li>Paint the chessboard support with matt black paint, which is a color that is very badly
+                        perceived by depth sensors, which could help to mask the support in the image
                     </li>
-                    <li>Creation of metadata field in datasets that contains information about the dataset, for example,
-                        date, user, etc.
+                    <li>
+                        Add a new horizontal beam to the support, as seen in the following image, with a counterweight
+                        on the other end of this beam, that allows to adapt the already existing support to move the
+                        chessboard further away from the support, which hopefully will solve the slope problem in the
+                        depth images/point clouds.
                     </li>
-                    <li>Tests with detection of rectangles in simulated and non-simulated depth images. For more
-                        details check issue <a href="https://github.com/lardemua/atom/issues/323">#323 </a>.
-                    </li>
-
                 </ul>
 
+
+                <a href="#!"><img class="img-fluid" src="../assets/img/new_support.png"
+                                  alt="..."/></a>
 
                 <p> TODO </p>
                 <ul>
                     <li>Check inconsistencies in calibration results with real data</li>
-                    <li>Check solution to hold the calibration pattern</li>
-                    <li>Calibration of simulated system with 3 lidars and 1 camera.</li>
                     <li>Adapt ATOM to calibrate RGBD sensors.</li>
+                    <li>Improve calibration pattern support to improve the depth images</li>
+                    <li>Define solution to detect calibration pattern in depth image</li>
                 </ul>
                 <p>
 
@@ -192,11 +234,16 @@
                 <p><a href="https://github.com/lardemua/atom/issues/323">Add depth component to ATOM's framework -
                     open </a>
                 </p>
-                <p><a href="https://github.com/lardemua/atom/issues/328">Create ids to identify sensors to label instead
-                    of identification through message type - open but implemented</a>
+                <p><a href="https://github.com/lardemua/atom/issues/331">Bug with aruco - closed </a>
                 </p>
-                <p><a href="https://github.com/lardemua/atom/issues/329">Create metadata field on dataset - open but
-                    implemented</a></p>
+                <p><a href="https://github.com/lardemua/atom/issues/332">Collector crashes - closed </a>
+                </p>
+
+                <p><a href="https://github.com/lardemua/atom/issues/328">Create ids to identify sensors to label instead
+                    of identification through message type - closed</a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/329">Create metadata field on dataset - closed</a>
+                </p>
                 <p><a href="https://github.com/lardemua/atom/issues/330">Create conversion script for dataset version 2
                     - open </a>
                 </p>
