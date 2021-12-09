@@ -139,12 +139,12 @@
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
-                    <h1>12 to 18 of November </h1>
+                    <h1>3 to 9 of December </h1>
                     <h2 class="subheading">Year 2</h2>
                     <span class="meta">
                                 Posted by
                                 <a href="#!">Daniela Rato</a>
-                                on November 11, 2021
+                                on December 2, 2021
                             </span>
                 </div>
             </div>
@@ -156,31 +156,27 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
-                <h2 class="section-heading"> Solving RGBD problems </h2>
+                <h2 class="section-heading"> Labelling Depth Images</h2>
 
+
+                <p>
+                    Activities this week:
+                </p>
+                <p>
                 <ul>
-                    <li>Construction of chessboard support and testing</li>
-                    <li>Implementation of a new system based on the sensor modality to identify the sensor to calibrate
-                        and therefore the correct labeler. This field is optional, in the case the user does not
-                        identify the sensor, it will be chosen automatically by the program using the msg_type published
-                        by the sensor.
-                    </li>
-                    <li>Creation of metadata field in datasets that contains information about the dataset, for example,
-                        date, user, etc.
-                    </li>
-                    <li>Tests with detection of rectangles in simulated and non-simulated depth images. For more
-                        details check issue <a href="https://github.com/lardemua/atom/issues/323">#323 </a>.
-                    </li>
-
+                    <li> Reduce computation effort of labelling procedure </li>
+                    <li> Create labelling dictionary that will be used for optimization</li>
+                    <li> Improving labelling in depth images</li>
+                    <li> Attempt to solve inconsistencies between results on test script and on ATOM framework (<a href="https://github.com/lardemua/atom/issues/323">more info here</a>) </li>
                 </ul>
 
 
                 <p> TODO </p>
                 <ul>
                     <li>Check inconsistencies in calibration results with real data</li>
-                    <li>Check solution to hold the calibration pattern</li>
-                    <li>Calibration of simulated system with 3 lidars and 1 camera.</li>
                     <li>Adapt ATOM to calibrate RGBD sensors.</li>
+                    <li>Improve calibration pattern support to improve the depth images</li>
+                    <li>Define solution to detect calibration pattern in depth image</li>
                 </ul>
                 <p>
 
@@ -192,11 +188,6 @@
                 <p><a href="https://github.com/lardemua/atom/issues/323">Add depth component to ATOM's framework -
                     open </a>
                 </p>
-                <p><a href="https://github.com/lardemua/atom/issues/328">Create ids to identify sensors to label instead
-                    of identification through message type - open but implemented</a>
-                </p>
-                <p><a href="https://github.com/lardemua/atom/issues/329">Create metadata field on dataset - open but
-                    implemented</a></p>
                 <p><a href="https://github.com/lardemua/atom/issues/330">Create conversion script for dataset version 2
                     - open </a>
                 </p>
