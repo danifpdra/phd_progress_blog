@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Daniela's PhD</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+          rel="stylesheet" type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet"/>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .img-zoom-container {
+            position: relative;
+        }
+
+        .img-zoom-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            /*set the size of the lens:*/
+            width: 80px;
+            height: 80px;
+        }
+
+        .img-zoom-result {
+            border: 1px solid #d4d4d4;
+            /*set the size of the result div:*/
+            width: 500px;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+    </style>
+    <script>
+        function imageZoom(imgID, resultID) {
+            var img, lens, result, cx, cy;
+            img = document.getElementById(imgID);
+            result = document.getElementById(resultID);
+            /*create lens:*/
+            lens = document.createElement("DIV");
+            lens.setAttribute("class", "img-zoom-lens");
+            /*insert lens:*/
+            img.parentElement.insertBefore(lens, img);
+            /*calculate the ratio between result DIV and lens:*/
+            cx = result.offsetWidth / lens.offsetWidth;
+            cy = result.offsetHeight / lens.offsetHeight;
+            /*set background properties for the result DIV:*/
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+            /*execute a function when someone moves the cursor over the image, or the lens:*/
+            lens.addEventListener("mousemove", moveLens);
+            img.addEventListener("mousemove", moveLens);
+            /*and also for touch screens:*/
+            lens.addEventListener("touchmove", moveLens);
+            img.addEventListener("touchmove", moveLens);
+
+            function moveLens(e) {
+                var pos, x, y;
+                /*prevent any other actions that may occur when moving over the image:*/
+                e.preventDefault();
+                /*get the cursor's x and y positions:*/
+                pos = getCursorPos(e);
+                /*calculate the position of the lens:*/
+                x = pos.x - (lens.offsetWidth / 2);
+                y = pos.y - (lens.offsetHeight / 2);
+                /*prevent the lens from being positioned outside the image:*/
+                if (x > img.width - lens.offsetWidth) {
+                    x = img.width - lens.offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y > img.height - lens.offsetHeight) {
+                    y = img.height - lens.offsetHeight;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                /*set the position of the lens:*/
+                lens.style.left = x + "px";
+                lens.style.top = y + "px";
+                /*display what the lens "sees":*/
+                result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+            }
+
+            function getCursorPos(e) {
+                var a, x = 0, y = 0;
+                e = e || window.event;
+                /*get the x and y positions of the image:*/
+                a = img.getBoundingClientRect();
+                /*calculate the cursor's x and y coordinates, relative to the image:*/
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                /*consider any page scrolling:*/
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x: x, y: y};
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="../index.html">Daniela's PhD</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../assets/img/larcc_2.jpeg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>1 to 14 of January </h1>
+                    <h2 class="subheading">Year 2</h2>
+                    <span class="meta">
+                                Posted by
+                                <a href="#!">Daniela Rato</a>
+                                on January 14, 2021
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h2 class="section-heading"> Depth Modality Calibration </h2>
+
+                <p>The process of adding the depth sensor to ATOM had two stages: collect data stage, which includes
+                    labelling, creating the dataset and saving the collection, and the calibration stage, which includes
+                    creating an objetive function branch for depth messages that outputs the residuals that are to be
+                    optimized. </p>
+                <p>Regarding the collect data phase, we created a labeling methodology based on region growth. For
+                    this, we need to give the function a seed point, from which the function will propagate until a
+                    chosen threshold to find the limits of the calibration pattern. This seed points is initially given
+                    by an interactive marker in RVIZ that can be placed overlapping the pattern. In the following
+                    frames, the seed point will be automatically calculated by the centroid of the detected pattern in
+                    the previous frame, assuming that the pattern does not move fast enough that the centroid of the
+                    previous frame would not overlap the pattern in the current frame. </p>
+                <p><a href="#!"><img class="img-fluid" src="../assets/img/label_visualization.jpeg"
+                                     alt="..."/></a></p>
+                <p>To facilitate the process of
+                    placing the interactive marker correctly, we added the visualization of the cameras's frustum to
+                    RVIZ, which allows us to see the 3D space covered by the camera.</p>
+                                        <p><a href="#!"><img class="img-fluid" src="../assets/img/frustum_atom.jpeg"
+                                             alt="..."/></a></p>
+                <p>After this process, the linear indexes of the detected points are stored in the dataset in two ways:
+                    the indexes of the limit points of the pattern and the indexes detected inside the pattern. The
+                    image is
+                    also store alongside the collection to visualize and later load the dataset information again. </p>
+                <p>For the calibration phase, we need to load back the values of the detected points, whose indexes were
+                    previously stored in the dataset, and convert them to the camera coordinated system, in meters,
+                    using the camera pinhole model. This is possible because the Z coordinate is already known (its the
+                    value of the pixel in the image). By comparing these coordinates with the coordinates of the pattern
+                    in the camera's frame, we can obtain the orthogonal and longitudinal errors, that are used as
+                    residuals to optimize the calibration. The calibrator was also adapted to give the option of
+                    sampling the depth data to make the calibration faster.</p>
+                                        <p><a href="#!"><img class="img-fluid" src="../assets/img/calibration_3_modalities.png"
+                                             alt="..."/></a></p>
+
+
+                <p> TODO </p>
+                <ul>
+                    <li>Improve calibration pattern support to improve the depth images detection</li>
+                    <li>Define solution to allow the robot to move the calibration pattern (robot assisted)</li>
+                    <li>Calibrate a system that includes a depth sensor</li>
+                    <li>Brainstorm about how are we going to calibrate the gantry with the sensors</li>
+                </ul>
+                <p>
+
+                </p>
+                <!--                <div class="my-4">-->
+
+                <h4>Issues </h4>
+                <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+                <p><a href="https://github.com/lardemua/atom/issues/323">Add depth component to ATOM's framework -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/341">Chessboard being poorly detected in RGB with
+                    lower resolution - closed </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/342">Check RGB header when loading json file -
+                    closed </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/343">Updating configure_calibration_pkg to
+                    automatically generate RVIZ configurations that include depth cameras topics and markers -
+                    closed </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/344">Should the seed point for depth labelling be
+                    updated automatically as in LiDARS or always given by the interactive marker? - closed </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/345">Calibrating a simulated system with RGB, LiDAR
+                    and Depth -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/346">Calibration taking too much time between
+                    iterations -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/347">Create one file with a function for each
+                    component of the objective function. -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/348">Sample limit points in depth labeller -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/349">Create rgbd camera xacro which also has a
+                    visual component for the depth camera -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/350">Simulated experiment mmtbot calibration using
+                    only the rgb cameras -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/351">Verify that the sensor link frame id is the one
+                    in the header of the topic name message -
+                    open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/352">Check if nig is being applied to the anchored
+                    sensor -
+                    closed </a>
+                </p>
+
+
+                <p>(opened but not this week's work)</p>
+
+                <p><a href="https://github.com/lardemua/larcc/issues/35">Change resolution of astra camera to SXGA
+                    or
+                    XGA - open</a></p>
+                <p><a href="https://github.com/lardemua/larcc/issues/37">Reduce camera frame rate in real time -
+                    open</a>
+                </p>
+                <p><a href="https://github.com/lardemua/atom/issues/330">Create conversion script for dataset version 2
+                    - open </a>
+                </p>
+                <p><a href="https://github.com/lardemua/larcc/issues/41">Chessboard support - documentation</a>
+                </p>
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+</article>
+<!-- Footer-->
+<footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2021</div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="../js/scripts.js"></script>
+</body>
+</html>
