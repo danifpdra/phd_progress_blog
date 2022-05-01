@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Daniela's PhD</title>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico"/>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+          rel="stylesheet" type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet"/>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .img-zoom-container {
+            position: relative;
+        }
+
+        .img-zoom-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            /*set the size of the lens:*/
+            width: 80px;
+            height: 80px;
+        }
+
+        .img-zoom-result {
+            border: 1px solid #d4d4d4;
+            /*set the size of the result div:*/
+            width: 500px;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+    </style>
+    <script>
+        function imageZoom(imgID, resultID) {
+            var img, lens, result, cx, cy;
+            img = document.getElementById(imgID);
+            result = document.getElementById(resultID);
+            /*create lens:*/
+            lens = document.createElement("DIV");
+            lens.setAttribute("class", "img-zoom-lens");
+            /*insert lens:*/
+            img.parentElement.insertBefore(lens, img);
+            /*calculate the ratio between result DIV and lens:*/
+            cx = result.offsetWidth / lens.offsetWidth;
+            cy = result.offsetHeight / lens.offsetHeight;
+            /*set background properties for the result DIV:*/
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+            /*execute a function when someone moves the cursor over the image, or the lens:*/
+            lens.addEventListener("mousemove", moveLens);
+            img.addEventListener("mousemove", moveLens);
+            /*and also for touch screens:*/
+            lens.addEventListener("touchmove", moveLens);
+            img.addEventListener("touchmove", moveLens);
+
+            function moveLens(e) {
+                var pos, x, y;
+                /*prevent any other actions that may occur when moving over the image:*/
+                e.preventDefault();
+                /*get the cursor's x and y positions:*/
+                pos = getCursorPos(e);
+                /*calculate the position of the lens:*/
+                x = pos.x - (lens.offsetWidth / 2);
+                y = pos.y - (lens.offsetHeight / 2);
+                /*prevent the lens from being positioned outside the image:*/
+                if (x > img.width - lens.offsetWidth) {
+                    x = img.width - lens.offsetWidth;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y > img.height - lens.offsetHeight) {
+                    y = img.height - lens.offsetHeight;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+                /*set the position of the lens:*/
+                lens.style.left = x + "px";
+                lens.style.top = y + "px";
+                /*display what the lens "sees":*/
+                result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+            }
+
+            function getCursorPos(e) {
+                var a, x = 0, y = 0;
+                e = e || window.event;
+                /*get the x and y positions of the image:*/
+                a = img.getBoundingClientRect();
+                /*calculate the cursor's x and y coordinates, relative to the image:*/
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                /*consider any page scrolling:*/
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x: x, y: y};
+            }
+        }
+    </script>
+</head>
+<body>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="../index.html">Daniela's PhD</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../assets/img/larcc_2.jpeg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>January to April </h1>
+                    <h2 class="subheading">Year 2</h2>
+                    <span class="meta">
+                                Posted by
+                                <a href="#!">Daniela Rato</a>
+                                on April 29, 2022
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h2 class="section-heading"> Calibration of LarCCell
+                </h2>
+
+                <p>LarCCell is a collaborative cell that serves as a case of study for this project. The ultimate goal
+                    is that it becomes a tridimensional space where it is safe for robots and humans to cooperate and
+                    perform common tasks. To achieve this goal, it is necessary to have a great abundance of sensors to
+                    monitor the space and to have redundancy to foresee occlusions. The current setup of LarCCell is
+                    shown in the following image.</p>
+
+
+                <p><a href="#!"><img class="img-fluid" width="560" src="../assets/img/larcc_sensors.png"
+                                     alt="..."/></a></p>
+
+                <p>To create a controlled environment and to have a "ground truth" to compare our real results, a
+                    simulation of our collaborative cell was developed to mimic the real cell that is installed in our
+                    laboratory. The following video shows a simulation of our current setup. </p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dfYrz1JNm6Q"
+                        title="Simulated Larcc" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                <p>The calibration of Larcc was done both in the simulated and real environment. The simulation serves
+                    as a base, because the position of the sensors is precisely known and the calibrated position can be
+                    compared with the actual position of the sensors, and we can evaluate whether our system is behaving
+                    the way it was supposed to. For this, we needed four datasets: a train and test dataset for real
+                    world, and the same for simulation. The train dataset is used to do the actual calibration, and the
+                    test dataset serves to run the evaluation metrics: the calibrated transformations are applied to the
+                    test dataset collections, that have the sensors in the same position as the train dataset, but
+                    different collections and calibration pattern positions.</p>
+
+                <p>
+                    As mentioned in previous posts, to calibrate Larcc it was necessary to add the depth camera to ATOM
+                    framework. The automatic labeling of this camera was developed with a tetra-directional propagation
+                    algorithm. The propagation happens from a seed points that is initially manually given, and then it
+                    is updated from frame to frame by assuming that the centroid of the chessboard in the depth image is
+                    still inside the chessboard in the next frame. Overall this works well but sometimes it is necessary
+                    to manually readjust its position.
+                    The following image shows an example of a labeled depth image. This labeling is divided in limit
+                    points (purple points) and inside points (yellow points).
+                </p>
+
+
+                <p><a href="#!"><img class="img-fluid" width="560" src="../assets/img/label_depth.png"
+                                     alt="..."/></a></p>
+
+                <p>The following images show RGB and LiDAR labels in the real larcc.</p>
+
+                <p><a href="#!"><img class="img-fluid" width="560" src="../assets/img/label_rgb.png"
+                                     alt="..."/></a></p>
+                <p><a href="#!"><img class="img-fluid" width="560" src="../assets/img/label_lidar.png"
+                                     alt="..."/></a></p>
+
+                <h4>Manual Labeling</h4>
+
+                <p>We noticed that there were being some problems with the LiDAR and depth labeling in the real data
+                    because nearby objects often confuse the automatic algorithms. Even small errors can have a huge
+                    impact on the calibration accuracy, so these labeling issues had to be addressed. For this, we
+                    developed a dataset reviewer, that loads the dataset and allows to manually correct both LiDAR and
+                    depth labelling to obtain more accurate results. The following video shows an example of the
+                    utilization of this dataset reviewer. </p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/uAE632thp58"
+                        title="Manual Labeling" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                <h4>Calibration</h4>
+
+                <p>The calibration framework was overall maintained except for the added depth camera. To calibrate the
+                    depth camera the philosophy was similar to the LiDAR: the inside label points were used to calculate
+                    the ortogonal error between the pattern and the depth projection and the limit labels were used to
+                    calculate the longitudinal errors. The main difference between these methodologies is that LiDARs
+                    already give us tridimensional points, and depth give us (x_pix, y_pix) and a distance value. So
+                    these values need to be converted using the pinhole camera model and by knowing Z (the value of the
+                    pixel in a specific coordinates) and we can obtain the real X,Y,Z coordinates.</p>
+
+                <p>So far, all the calibration tests performed in real world datasets retrieved from different bagfiles
+                    showed promising results with sub-pixel error for RGB cameras and milimetric error for LiDARs and
+                    depth cameras. </p>
+
+                <p>The following video shows a demonstration of the calibrate collaborative cell in real world. </p>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/wdeDKsyOgZ4"
+                        title="Larcc real calibrated" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                <p>The following images show the difference between calibrated and uncalibrated data. </p>
+
+
+                <p><a href="#!"><img class="img-fluid" width="560" src="../assets/img/imgs_calibrated.png"
+                                     alt="..."/></a></p>
+                <p><a href="#!"><img class="img-fluid" width="560" src="../assets/img/cell_calibrated.png"
+                                     alt="..."/></a></p>
+
+                <h4>Other problems solved </h4>
+                <ul>
+                    <li>Fixed saved depth images with wrong file type that was causing deformed and unreadable
+                        datasets.
+                    </li>
+                    <li>Fixed calibration disparity between anchored LiDAR sensors and other sensors (calibration was
+                        giving
+                        less weight to the anchored sensor due to being a LiDAR and having lower errors than cameras)
+                    </li>
+                    <li>Fixed script for inspecting the dataset (was not working when the first collection had no
+                        detection)
+                    </li>
+                    <li>Fixed calibration script (was not working when it had only one collection and one of the sensors
+                        had no detection)
+                    </li>
+                    <li>Added the launch file generation for the dataset playback (reviewer)</li>
+                    <li>Added depth image visualization to both the visualization function of the calibrator and the
+                        dataset playback
+                    </li>
+                    <li>Added chessboard projections to the depth image when calibration to able the visualization of
+                        the progress of calibration
+                    </li>
+                    <li>Added option to input different configuration files when configuring the calibration package
+                    </li>
+                    <li>Fixing calibration errors of anchored LiDAR</li>
+                    <li>Removing depth limit labelling of image limits</li>
+                </ul>
+
+
+                <p> TODO </p>
+                <ul>
+                    <li>Obtain qualitative results on the larcc calibration in real data</li>
+                    <li>Obtain qualitative results on the larcc calibration in real data</li>
+                    <li>Compare obtained calibration results with OpenCV pairwise calibration for RGB cameras
+                    </li>
+                    <li>Compare obtained calibration results with ICP pairwise calibration for 3D LiDAR</li>
+                </ul>
+                <p>
+
+                </p>
+                <!--                <div class="my-4">-->
+
+<!--                <h4>Issues </h4>-->
+<!--                &lt;!&ndash;%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&ndash;&gt;-->
+<!--                <p><a href="https://github.com/lardemua/atom/issues/323">Add depth component to ATOM's framework-->
+<!--                    - -->
+<!--                    open </a>-->
+<!--                </p>-->
+
+
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+</article>
+<!-- Footer-->
+<footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2021</div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="../js/scripts.js"></script>
+</body>
+</html>
